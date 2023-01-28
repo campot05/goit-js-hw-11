@@ -13,15 +13,18 @@ refs.form.addEventListener('submit', e => {
   e.preventDefault();
   const value = refs.input.value;
 
-  try {
-    fetchImg(API_KEY, value).then(res => {
-      refs.gallery.insertAdjacentHTML('beforeend', createItemGallety(res));
-    });
-  } catch {
-    Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
-  }
+  fetchImg(API_KEY, value)
+    .then(res => {
+      const items = createItemGallety(res);
+      if (items === '') {
+        Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+        return;
+      }
+      refs.gallery.insertAdjacentHTML('beforeend', items);
+    })
+    .catch(err => console.log(err));
 });
 
 function fetchImg(key, value) {
@@ -38,8 +41,7 @@ function fetchImg(key, value) {
         safesearch: true,
       },
     })
-    .then(response => response.data.hits)
-    .catch(error => console.log(error));
+    .then(response => response.data.hits);
 }
 
 function createItemGallety(items) {
