@@ -1,5 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import axios from 'axios';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const API_KEY = '33190219-0860edc2b5cf578f738ea4f26';
 
@@ -9,6 +11,9 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
+refs.gallery.addEventListener('click', e => {
+  e.preventDefault();
+});
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
   const value = refs.input.value;
@@ -23,6 +28,7 @@ refs.form.addEventListener('submit', e => {
         return;
       }
       refs.gallery.insertAdjacentHTML('beforeend', items);
+      lightbox.refresh();
     })
     .catch(err => console.log(err));
 });
@@ -85,3 +91,5 @@ function createItemGallety(items) {
     )
     .join('');
 }
+
+const lightbox = new SimpleLightbox('.gallery a');
