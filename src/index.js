@@ -28,6 +28,7 @@ refs.form.addEventListener('submit', e => {
         );
         return;
       }
+      Notify.success(`Hooray! We found ${items.length} images.`);
       refs.gallery.insertAdjacentHTML('beforeend', items);
       lightbox.refresh();
     })
