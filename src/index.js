@@ -16,6 +16,7 @@ refs.gallery.addEventListener('click', e => {
 });
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
+  refs.gallery.innerHTML = '';
   const value = refs.input.value;
 
   fetchImg(API_KEY, value)
