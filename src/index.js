@@ -1,11 +1,9 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import test from './test.hbs';
+import cards from './templates/cards.hbs';
+import { API_KEY, fetchImg } from './js/fetchImg';
 
-const API_KEY = '33190219-0860edc2b5cf578f738ea4f26';
-console.log(2);
 const refs = {
   input: document.querySelector('.input'),
   form: document.querySelector('.search-form'),
@@ -36,25 +34,8 @@ refs.form.addEventListener('submit', e => {
     .catch(err => console.log(err));
 });
 
-function fetchImg(key, value) {
-  return axios
-    .get('https://pixabay.com/api/', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      params: {
-        key: `${API_KEY}`,
-        q: `${value}`,
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: true,
-      },
-    })
-    .then(response => response.data.hits);
-}
-
 function createItemGallety(items) {
-  return items.map(test).join('');
+  return items.map(cards).join('');
 }
 
 const lightbox = new SimpleLightbox('.gallery a');
