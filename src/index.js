@@ -5,7 +5,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import test from './test.hbs';
 
 const API_KEY = '33190219-0860edc2b5cf578f738ea4f26';
-
+console.log(1);
 const refs = {
   input: document.querySelector('.input'),
   form: document.querySelector('.search-form'),
