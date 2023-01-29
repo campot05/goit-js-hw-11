@@ -14,9 +14,10 @@ function fetchImg(key, value) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
+        per_page: 40,
       },
     })
     .then(response => response.data.hits);
 }
 
-export { API_KEY, fetchImg };
+export { API_KEY, fetchImg, page };

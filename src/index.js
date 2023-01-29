@@ -2,7 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import cards from './templates/cards.hbs';
-import { API_KEY, fetchImg } from './js/fetchImg';
+import { API_KEY, fetchImg, page } from './js/fetchImg';
 
 const refs = {
   input: document.querySelector('.input'),
