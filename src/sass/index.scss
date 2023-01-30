@@ -118,3 +118,43 @@
   width: calc(100% - 10px);
   height: calc(100% + 10px);
 }
+
+.is-hidden {
+  display: none;
+}
+
+.spinner {
+  position: absolute;
+  top: 257px;
+  left: 35%;
+  color: rgb(90, 0, 255);
+}
+.spinner.is-hidden {
+  display: none;
+}
+
+.preloader {
+  margin-top: 10px;
+}
+
+.preloader__image {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  animation: preloader-rotate 2s infinite linear;
+}
+
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loaded_hiding .preloader {
+  transition: 0.3s opacity;
+  opacity: 0;
+}
+
+.loaded .preloader {
+  display: none;
+}
