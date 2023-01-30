@@ -94,6 +94,7 @@ async function onSubmit(e) {
   if (hits.length < perPage) {
     onHideLoadBtn();
   }
+  lightbox.refresh();
 }
 
 async function loadMore(e) {
@@ -113,6 +114,7 @@ async function loadMore(e) {
     onHideLoadBtn();
     Notify.info("We're sorry, but you've reached the end of search results.");
   }
+  lightbox.refresh();
 }
 
 function createItemGallety(items) {
