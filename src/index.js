@@ -103,11 +103,12 @@ async function loadMore(e) {
   spinnerOn();
 
   const data = await fetchImg(value, pageNumber, perPage);
-  const { hits, totalHits } = data;
   spinnerOff();
   onShowLoadBtn();
+  const { hits, totalHits } = data;
   const items = createItemGallety(hits);
   refs.gallery.insertAdjacentHTML('beforeend', items);
+  scroll();
   if (hits.length < perPage) {
     onHideLoadBtn();
     Notify.info("We're sorry, but you've reached the end of search results.");
@@ -132,4 +133,15 @@ function spinnerOn() {
 
 function spinnerOff() {
   refs.spinner.classList.add('is-hidden');
+}
+
+function scroll() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
