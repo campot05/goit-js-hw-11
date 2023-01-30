@@ -115,8 +115,6 @@
 }
 .load-more:hover:after {
   border-color: #800ff1;
-  width: calc(100% - 10px);
-  height: calc(100% + 10px);
 }
 
 .is-hidden {
@@ -157,4 +155,22 @@
 
 .loaded .preloader {
   display: none;
+}
+
+#scroll-top {
+  position: fixed;
+  bottom: 100px;
+  right: 70px;
+  font-size: 40px;
+  z-index: 10;
+  cursor: pointer;
+  color: rgb(90, 0, 255);
+}
+
+.is-show {
+  opacity: 1;
+  transition: all 0.4s ease;
+  &_off {
+    opacity: 0;
+  }
 }
