@@ -43,6 +43,7 @@ async function onSubmit(e) {
   spinnerOff();
   onShowLoadBtn();
   if (!totalHits) {
+    onHideLoadBtn();
     return Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
