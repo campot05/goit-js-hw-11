@@ -8,6 +8,7 @@ const refs = {
   input: document.querySelector('.input'),
   form: document.querySelector('.search-form'),
   gallery: document.querySelector('.gallery'),
+  btn: document.querySelector('.load-more'),
 };
 
 refs.gallery.addEventListener('click', e => {
