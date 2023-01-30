@@ -19,15 +19,19 @@ refs.form.addEventListener('submit', e => {
   const value = refs.input.value;
 
   fetchImg(API_KEY, value)
+    .then(response => {
+      return response.data;
+    })
     .then(res => {
-      const items = createItemGallety(res);
+      console.log(res);
+      const items = createItemGallety(res.hits);
       if (items === '') {
         Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
         return;
       }
-      Notify.success(`Hooray! We found ${items.length} images.`);
+      Notify.success(`Hooray! We found ${res.totalHits} images.`);
       refs.gallery.insertAdjacentHTML('beforeend', items);
       lightbox.refresh();
     })
